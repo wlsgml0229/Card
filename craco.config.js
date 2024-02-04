@@ -10,4 +10,14 @@ module.exports = {
       },
     },
   ],
+  //emotion에 대한 babel설정
+  babel: {
+    presets: [
+      [
+        "@babel/preset-react",
+        { runtime: "automatic", importSource: "@emotion/react" },
+      ],
+    ],
+    plugins: ["@emotion/babel-plugin"],
+  },
 }
