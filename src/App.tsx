@@ -1,18 +1,14 @@
-import "./App.css"
-import Text from "@shared/Text"
-import Button from "./components/shared/Button"
-
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "@pages/Home"
+import Test from "@pages/Test"
 function App() {
   return (
-    <div>
-      <Text typography="t1">t1</Text>
-      <Text typography="t2">t2</Text>
-      <Text typography="t3">t3</Text>
-      <Text typography="t4">t4</Text>
-      <Text>t5</Text>
-      <hr />
-      <Button size="small">클릭해주세요</Button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" Component={Home} />
+        <Route path="/test" Component={Test} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
