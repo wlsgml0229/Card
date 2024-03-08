@@ -3,8 +3,11 @@ import ListRow from "@shared/ListRow"
 import { getCards } from "@/remote/card"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useCallback } from "react"
+import Badge from "@shared/Badge"
+import { useNavigate } from "react-router-dom"
 
 const CardList = () => {
+  const navigate = useNavigate()
   const {
     data,
     hasNextPage = false,
@@ -40,19 +43,26 @@ const CardList = () => {
         hasMore={hasNextPage}
         loader={<></>}
         next={loadMore}
+        scrollThreshold="100px"
       >
-        {cards.map((card, idx) => {
-          return (
-            <ListRow
-              key={card.id}
-              contents={
-                <ListRow.Texts title={`${idx + 1}위`} subTitle={card.name} />
-              }
-              right={card?.payback ? <div>{card.payback}</div> : null}
-              withArrow={true}
-            ></ListRow>
-          )
-        })}
+        <ul>
+          {cards.map((card, idx) => {
+            return (
+              <ListRow
+                key={card.id}
+                contents={
+                  <ListRow.Texts title={`${idx + 1}위`} subTitle={card.name} />
+                }
+                right={card?.payback && <Badge label={card.payback} />}
+                withArrow={true}
+                onClick={() => {
+                  console.log("click")
+                  navigate(`/card/${card.id}`)
+                }}
+              />
+            )
+          })}
+        </ul>
       </InfiniteScroll>
     </div>
   )
