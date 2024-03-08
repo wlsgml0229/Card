@@ -10,9 +10,20 @@ interface ListRowProps {
   onClick?: () => void
 }
 
-const ListRow = ({ left, right, contents, withArrow }: ListRowProps) => {
+const ListRow = ({
+  left,
+  right,
+  contents,
+  withArrow,
+  onClick,
+}: ListRowProps) => {
   return (
-    <Flex as="li" css={listrowContainerStyles} align="center">
+    <Flex
+      as="li"
+      css={[listrowContainerStyles, onClick && clickStyles]}
+      align="center"
+      onClick={onClick}
+    >
       <Flex css={listRowLeftStyles}>{left}</Flex>
       <Flex css={listRowContentStyles}>{contents}</Flex>
       <Flex>{right}</Flex>
@@ -31,6 +42,10 @@ const listRowLeftStyles = css`
 
 const listRowContentStyles = css`
   flex: 1;
+`
+
+const clickStyles = css`
+  cursor: pointer;
 `
 
 const ListRowTexts = ({
