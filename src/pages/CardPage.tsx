@@ -6,6 +6,10 @@ import { colors } from "@/styles/colorPalette"
 import Top from "@/components/shared/Top"
 import ListRow from "@/components/shared/ListRow"
 import FixedBottomButton from "@/components/shared/FixedBottomButton"
+import Flex from "@/components/shared/Flex"
+import Text from "@/components/shared/Text"
+import { css } from "@emotion/react"
+
 const CardPage = () => {
   // id에 따른 키값 캐싱
   const { id = "" } = useParams()
@@ -24,22 +28,30 @@ const CardPage = () => {
         {benefit.map((text, idx) => {
           return (
             <ListRow
+              key={idx}
               left={<IconCheck />}
               contents={
-                <ListRow.Texts
-                  key={text}
-                  title={`혜택 ${idx + 1}`}
-                  subTitle={text}
-                />
+                <ListRow.Texts title={`혜택 ${idx + 1}`} subTitle={text} />
               }
             />
           )
         })}
       </ul>
+      {promotion ? (
+        <Flex direction="column" css={termsContainerStyles}>
+          <Text bold={true}>유의사항</Text>
+          <Text>{removeHtmlTags(promotion.terms)}</Text>
+        </Flex>
+      ) : null}
       <FixedBottomButton label="신청하기" onClick={() => {}} />
     </div>
   )
 }
+
+const termsContainerStyles = css`
+  margin-top: 80px;
+  padding: 0px 24px 80px 24px;
+`
 
 function removeHtmlTags(text: string) {
   let output = ""
@@ -89,4 +101,5 @@ function IconCheck() {
     </svg>
   )
 }
+
 export default CardPage
