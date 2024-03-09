@@ -2,13 +2,14 @@ import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
 import { getCard } from "@remote/card"
 import { colors } from "@/styles/colorPalette"
+import { easeInOut, motion } from "framer-motion"
+import { css } from "@emotion/react"
 
 import Top from "@/components/shared/Top"
 import ListRow from "@/components/shared/ListRow"
 import FixedBottomButton from "@/components/shared/FixedBottomButton"
 import Flex from "@/components/shared/Flex"
 import Text from "@/components/shared/Text"
-import { css } from "@emotion/react"
 
 const CardPage = () => {
   // id에 따른 키값 캐싱
@@ -27,13 +28,30 @@ const CardPage = () => {
       <ul>
         {benefit.map((text, idx) => {
           return (
-            <ListRow
-              key={idx}
-              left={<IconCheck />}
-              contents={
-                <ListRow.Texts title={`혜택 ${idx + 1}`} subTitle={text} />
-              }
-            />
+            <motion.li
+              key={text}
+              initial={{
+                opacity: 0,
+                translateX: -120,
+              }}
+              transition={{
+                duration: 0.7,
+                ease: easeInOut,
+                delay: idx * 0.1,
+              }}
+              animate={{
+                translateX: 0,
+                opacity: 1,
+              }}
+            >
+              <ListRow
+                as="div"
+                left={<IconCheck />}
+                contents={
+                  <ListRow.Texts title={`혜택 ${idx + 1}`} subTitle={text} />
+                }
+              />
+            </motion.li>
           )
         })}
       </ul>

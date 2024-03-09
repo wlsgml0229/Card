@@ -8,6 +8,7 @@ interface ListRowProps {
   right?: React.ReactNode
   withArrow?: boolean
   onClick?: () => void
+  as?: "div" | "li"
 }
 
 const ListRow = ({
@@ -16,10 +17,11 @@ const ListRow = ({
   contents,
   withArrow,
   onClick,
+  as = "li",
 }: ListRowProps) => {
   return (
     <Flex
-      as="li"
+      as={as}
       css={[listrowContainerStyles, onClick && clickStyles]}
       align="center"
       onClick={onClick}
