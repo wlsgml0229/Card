@@ -16,7 +16,7 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   function TextFiled(
-    { label, type, placeholder, hasError, helpMessage, onFocus, onBlur },
+    { label, helpMessage, hasError, onFocus, onBlur, ...props },
     ref,
   ) {
     const [focused, setFocused] = useState(false)
@@ -47,11 +47,10 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         ) : null}
         <Input
           ref={ref}
-          type={type}
-          placeholder={placeholder}
           aria-invalid={hasError}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          {...props}
         />
         {helpMessage ? (
           <Text
