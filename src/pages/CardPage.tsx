@@ -5,6 +5,7 @@ import { colors } from "@/styles/colorPalette"
 
 import Top from "@/components/shared/Top"
 import ListRow from "@/components/shared/ListRow"
+import FixedBottomButton from "@/components/shared/FixedBottomButton"
 const CardPage = () => {
   // id에 따른 키값 캐싱
   const { id = "" } = useParams()
@@ -15,6 +16,7 @@ const CardPage = () => {
   if (!data) return null
   const { name, corpName, promotion, tags, benefit } = data
   const subTitle = promotion ? removeHtmlTags(promotion.title) : tags.join(", ")
+
   return (
     <div>
       <Top title={`${corpName} ${name}`} subTitle={subTitle || ""}></Top>
@@ -34,6 +36,7 @@ const CardPage = () => {
           )
         })}
       </ul>
+      <FixedBottomButton label="신청하기" onClick={() => {}} />
     </div>
   )
 }
