@@ -1,16 +1,16 @@
 import { ChangeEvent, useCallback, useState, useMemo } from "react"
 
-import Flex from "@/components/shared/Flex"
-import TextField from "@/components/shared/TextField"
-import Button from "@/components/shared/Button"
+import Flex from "@shared/Flex"
+import TextField from "@shared/TextField"
+import Button from "@shared/Button"
 import Text from "@shared/Text"
 
 import { Spacing } from "@shared/Spacing"
 import { css } from "@emotion/react"
 import { Link } from "react-router-dom"
-import { colors } from "@/styles/colorPalette"
+import { colors } from "@styles/colorPalette"
 import validator from "validator"
-import { FormValues } from "@/models/signin"
+import { FormValues } from "@models/signin"
 
 export default function Form({
   onSubmit,

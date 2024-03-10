@@ -5,11 +5,11 @@ import { colors } from "@/styles/colorPalette"
 import { easeInOut, motion } from "framer-motion"
 import { css } from "@emotion/react"
 
-import Top from "@/components/shared/Top"
+import Top from "@shared/Top"
 import ListRow from "@/components/shared/ListRow"
-import FixedBottomButton from "@/components/shared/FixedBottomButton"
-import Flex from "@/components/shared/Flex"
-import Text from "@/components/shared/Text"
+import FixedBottomButton from "@shared/FixedBottomButton"
+import Flex from "@shared/Flex"
+import Text from "@shared/Text"
 
 const CardPage = () => {
   // id에 따른 키값 캐싱

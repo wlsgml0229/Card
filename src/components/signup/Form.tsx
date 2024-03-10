@@ -1,9 +1,9 @@
 import { ChangeEvent, useCallback, useState, useMemo } from "react"
-import TextField from "@/components/shared/TextField"
+import TextField from "@shared/TextField"
 import Flex from "@shared/Flex"
 import FixedBottomButton from "@shared/FixedBottomButton"
 import { css } from "@emotion/react"
-import { FormValues } from "@/models/signup"
+import { FormValues } from "@models/signup"
 import validator from "validator"
 
 type BooleanFormValuse = {

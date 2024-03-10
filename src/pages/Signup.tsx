@@ -1,12 +1,12 @@
 import Form from "@/components/signup/Form"
 
 import { COLLECTIONS } from "@/constants"
-import { FormValues } from "@/models/signup"
+import { FormValues } from "@models/signup"
 
-import { auth } from "@/remote/firebase"
+import { auth } from "@remote/firebase"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { collection, doc, setDoc } from "firebase/firestore"
-import { store } from "@/remote/firebase"
+import { store } from "@remote/firebase"
 
 export default function SignupPage() {
   const handleSubmit = async (formValues: FormValues) => {
