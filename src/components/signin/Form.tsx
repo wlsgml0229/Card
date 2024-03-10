@@ -29,6 +29,15 @@ export default function Form({
     }))
   }, [])
 
+  const handleOnKey = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "Enter") {
+        onSubmit(formValues)
+      }
+    },
+    [onSubmit, formValues],
+  )
+
   const errors = useMemo(() => validate(formValues), [formValues])
 
   const isSubmit = Object.keys(errors).length === 0
@@ -50,6 +59,7 @@ export default function Form({
         placeholder="password"
         onChange={handleFormValues}
         value={formValues.password}
+        onKeyDown={handleOnKey} //
       />
 
       <Spacing size={32} />

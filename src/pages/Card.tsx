@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getCard } from "@remote/card"
 import { colors } from "@/styles/colorPalette"
 import { easeInOut, motion } from "framer-motion"
@@ -10,13 +10,31 @@ import ListRow from "@/components/shared/ListRow"
 import FixedBottomButton from "@shared/FixedBottomButton"
 import Flex from "@shared/Flex"
 import Text from "@shared/Text"
+import { useCallback } from "react"
+import { useUser } from "@/hooks/useUser"
+import useAlertContext from "@/contexts/AlertContext"
 
 const CardPage = () => {
   // id에 따른 키값 캐싱
   const { id = "" } = useParams()
+  const navigate = useNavigate()
+  const user = useUser()
+  const { open } = useAlertContext()
+
   const { data } = useQuery(["card", id], () => getCard(id), {
     enabled: id !== "",
   })
+
+  const moveToApply = useCallback(() => {
+    if (user) return navigate(`/apply/${id}`)
+
+    open({
+      title: "로그인이 필요한 기능입니다.",
+      onButtonClick: () => {
+        navigate("/signin")
+      },
+    })
+  }, [user, open, id, navigate])
 
   if (!data) return null
   const { name, corpName, promotion, tags, benefit } = data
@@ -61,7 +79,12 @@ const CardPage = () => {
           <Text>{removeHtmlTags(promotion.terms)}</Text>
         </Flex>
       ) : null}
-      <FixedBottomButton label="신청하기" onClick={() => {}} />
+      <FixedBottomButton
+        label="신청하기"
+        onClick={() => {
+          moveToApply()
+        }}
+      />
     </div>
   )
 }

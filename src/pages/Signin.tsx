@@ -19,7 +19,8 @@ export default function SigninPage() {
       navigate("/")
     } catch (e) {
       if (e instanceof FirebaseError) {
-        if (e.code === "auth/wrong-password") {
+        console.dir(e)
+        if (e.code === "auth/invalid-credential") {
           open({
             title: "일치하는 계정 정보가 없습니다 ",
             onButtonClick: () => {},
