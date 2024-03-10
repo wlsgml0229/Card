@@ -7,10 +7,14 @@ import { FormValues } from "@/models/signup"
 import validator from "validator"
 
 type BooleanFormValuse = {
-  [key in keyof FormValues]: boolean // 모든 키 값은 문자열
+  [key in keyof FormValues]: boolean
 }
 
-export default function Form() {
+export default function Form({
+  onSubmit,
+}: {
+  onSubmit: (FormValues: FormValues) => void
+}) {
   const [formValues, setFormValues] = useState<FormValues>({
     email: "",
     password: "",
@@ -92,7 +96,7 @@ export default function Form() {
 
       <FixedBottomButton
         label="회원가입"
-        onClick={() => {}}
+        onClick={() => onSubmit(formValues)}
         disabled={!isSubmit}
       />
     </Flex>
