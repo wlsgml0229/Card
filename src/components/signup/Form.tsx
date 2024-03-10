@@ -109,7 +109,6 @@ const formContainerStyles = css`
 `
 
 function validate(formValues: FormValues) {
-  console.log(formValues)
   let errors: Partial<FormValues> = {}
   if (!validator.isEmail(formValues.email)) {
     errors.email = "이메일 형식을 확인해주세요."
