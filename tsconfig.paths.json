@@ -11,7 +11,8 @@
             "@pages/*": ["src/pages/*"],
             "@remote/*": ["src/remote/*"],
             "@constants": ["src/constants/index"],
-            "@atoms/*": ["src/atoms/*"]
+            "@atoms/*": ["src/atoms/*"],
+            "@hooks/*": ["src/hooks/*"]
         }
     }
 }

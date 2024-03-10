@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "@pages/Home"
 import Test from "@pages/Test"
 import CardPage from "@/pages/Card"
-import ScrollToTop from "./components/shared/ScrollToTop"
-import SigninPage from "./pages/Signin"
-import SignupPage from "./pages/Signup"
-import Navbar from "./components/shared/Navbar"
+import ScrollToTop from "@shared/ScrollToTop"
+import SigninPage from "@pages/Signin"
+import SignupPage from "@pages/Signup"
+import Navbar from "@shared/Navbar"
 function App() {
   return (
     <BrowserRouter>
