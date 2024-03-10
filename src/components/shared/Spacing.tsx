@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 
 interface SpacingProps {
   size: number
-  direction: "vertical" | "horizontal"
+  direction?: "vertical" | "horizontal"
 }
 
 export const Spacing = styled.div<SpacingProps>`
