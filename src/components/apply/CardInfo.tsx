@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react"
 
 export default function CardInfo() {
-  return (
-    <div>CardInfo</div>
-  )
+  return <div>CardInfo</div>
 }
