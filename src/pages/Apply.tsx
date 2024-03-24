@@ -6,7 +6,7 @@ import BasicInfo from "@components/apply/BasicInfo"
 import CardInfo from "@components/apply/CardInfo"
 
 export default function ApplyPage() {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(1)
 
   const handleTermsChange = (values: string[]) => {
     console.log(values)

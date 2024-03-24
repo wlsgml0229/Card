@@ -8,6 +8,7 @@ export const colorPalette = css`
     --white: #fff;
     --black: #212121;
     --grey: #f2f5f7;
+    --darkgrey: #aaaaaa;
   }
 `
 
@@ -18,6 +19,7 @@ export const colors = {
   white: "var(--white)",
   black: "var(--black)",
   grey: "var(--grey)",
+  darkgrey: "var(--darkgrey)",
 }
 
 //key값들만 타입으로
